@@ -5,14 +5,11 @@ import 'package:flutter_architecture/app/ui/widgets/input.dart';
 import 'package:flutter_architecture/app/ui/widgets/logo.dart';
 import 'package:flutter_architecture/app/ui/widgets/snack_bar.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
-import 'package:flutter_architecture/core/di/injector_provider.dart';
 import 'package:flutter_architecture/device/nav/nav_slide_from_top.dart';
 import 'package:flutter_architecture/core/values/dimens.dart' as dimens;
-import 'login.view_model.dart';
 
 class LoginWidget {
-  final vm = inject<LoginViewModel>();
-
+  // final vm = inject<LoginViewModel>();
   Widget form(BuildContext context, GlobalKey<ScaffoldState> key) {
     return Padding(
       padding: const EdgeInsets.all(dimens.margin),

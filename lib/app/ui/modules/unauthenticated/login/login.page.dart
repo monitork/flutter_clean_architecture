@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/ui/components/loading.dart';
-import 'package:flutter_architecture/core/di/injector_provider.dart';
-
-import 'login.view_model.dart';
+import 'package:flutter_architecture/app/ui/modules/unauthenticated/login/login.bloc.dart';
+// import 'package:flutter_architecture/core/base/bloc_provider.dart';
+import 'package:flutter_architecture/core/base/provider.dart';
 import 'login.widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,14 +13,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> with LoginWidget {
-  @override
-  final vm = inject<LoginViewModel>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider1.of<LoginBloc>(context);
     return StreamBuilder<bool>(
-        stream: vm.loading,
+        stream: bloc.loading,
         builder: (context, snapshot) {
           return LoadingWidget(
               message: "Loading message",

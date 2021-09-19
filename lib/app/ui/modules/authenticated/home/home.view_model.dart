@@ -1,8 +1,9 @@
-import 'package:flutter_architecture/core/base/view_mode.base.dart';
+import 'package:flutter_architecture/core/base/bloc_base.dart'; 
 
-class HomeViewModel extends BaseViewModel {
+class HomeViewModel extends BlocBase {
   @override
-  void clear() {
-    // TODO: implement reset
+  void dispose() {
+    // TODO: implement dispose
   }
+
 }
