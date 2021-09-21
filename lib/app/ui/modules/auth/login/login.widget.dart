@@ -29,6 +29,8 @@ class LoginWidget {
                 builder: (context, AsyncSnapshot<String> snapshot) {
                   return InputWidget(
                     placeholder: "LOGIN",
+                    capitalization: TextCapitalization.sentences,
+                    // Ký tự đầu tiên sẽ viết hoa
                     value: snapshot.data,
                     errorMessage: snapshot.error?.toString(),
                     onChange: (value) => vm.setLogin(value),

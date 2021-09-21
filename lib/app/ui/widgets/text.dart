@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/core/values/dimens.dart' as dimens;
-import 'package:flutter_architecture/core/values/colors.dart' as colors;
+import 'package:flutter_architecture/core/values/colors.dart';
 
 class TextWidget extends StatelessWidget {
   final String? text;
@@ -55,12 +55,12 @@ class TextWidget extends StatelessWidget {
                     : dimens.fontText;
 
     final Color customColor = primary == true
-        ? colors.primaryColor
+        ? AppColors.primaryColor
         : white == true
             ? Colors.white
             : accent == true
-                ? colors.accentLightColor
-                : colors.primaryColorDark;
+                ? AppColors.accentLightColor
+                : AppColors.primaryColorDark;
 
     return Text(textValue,
         maxLines: maxLines,
@@ -76,7 +76,7 @@ class TextWidget extends StatelessWidget {
             fontSize: fontSize,
             color: (color == null)
                 ? dark
-                    ? colors.backgroundColor
+                    ? AppColors.backgroundColor
                     : customColor
                 : color,
             fontWeight: isBold));

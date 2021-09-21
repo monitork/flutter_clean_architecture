@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
-import 'package:flutter_architecture/core/values/colors.dart' as colors;
+import 'package:flutter_architecture/core/values/colors.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String label;
@@ -26,23 +26,23 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final action = disabled == true ? null : onPress;
 
-    Color backgroundColor = colors.accentColor;
-    Color borderColor = colors.accentColor;
+    Color backgroundColor = AppColors.accentColor;
+    Color borderColor = AppColors.accentColor;
     Color textColor = Colors.white;
 
     if (transparent == true) {
-      backgroundColor = colors.backgroundColor;
-      borderColor = colors.accentLightColor;
-      textColor = colors.accentLightColor;
+      backgroundColor = AppColors.backgroundColor;
+      borderColor = AppColors.accentLightColor;
+      textColor = AppColors.accentLightColor;
     } else {
-      backgroundColor = colors.accentLightColor;
-      borderColor = colors.accentLightColor;
+      backgroundColor = AppColors.accentLightColor;
+      borderColor = AppColors.accentLightColor;
       textColor = Colors.white;
     }
 
     if (facebook == true) {
-      backgroundColor = colors.facebookColor;
-      borderColor = colors.facebookColor;
+      backgroundColor = AppColors.facebookColor;
+      borderColor = AppColors.facebookColor;
       textColor = Colors.white;
     }
 

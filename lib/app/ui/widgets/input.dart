@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_architecture/core/values/colors.dart' as colors;
+import 'package:flutter_architecture/core/values/colors.dart';
 import 'package:flutter_architecture/core/values/dimens.dart' as dimens;
 
 class InputWidget extends StatefulWidget {
@@ -15,6 +15,7 @@ class InputWidget extends StatefulWidget {
   final String? errorMessage;
   final String? labelText;
   final String? mask;
+  final TextCapitalization capitalization;
 
   const InputWidget(
       {Key? key,
@@ -28,7 +29,8 @@ class InputWidget extends StatefulWidget {
       this.dark,
       this.multiline,
       this.labelText,
-      this.mask})
+      this.mask,
+      this.capitalization = TextCapitalization.none})
       : super(key: key);
 
   @override
@@ -62,14 +64,15 @@ class _InputWidgetState extends State<InputWidget> {
           onChanged: (value) {
             if (widget.onChange != null) widget.onChange!(value);
           },
+          textCapitalization: widget.capitalization,
           maxLines: widget.multiline == true ? null : 1,
           keyboardType: widget.multiline == true
               ? TextInputType.multiline
               : widget.keyboardType,
           style: TextStyle(
               color: widget.dark == false
-                  ? colors.primaryColor
-                  : colors.primaryColorDark //cor do texto ao digitar,
+                  ? AppColors.primaryColor
+                  : AppColors.primaryColorDark //cor do texto ao digitar,
               ),
           autofocus: widget.autofocus ? false : true,
           decoration: InputDecoration(
@@ -82,7 +85,7 @@ class _InputWidgetState extends State<InputWidget> {
                 borderSide: BorderSide(
                     color: widget.dark == false
                         ? Colors.white
-                        : colors.primaryColor, //cor da borda
+                        : AppColors.primaryColor, //cor da borda
                     width: 0.5),
               ),
               hintStyle: const TextStyle(
@@ -92,21 +95,20 @@ class _InputWidgetState extends State<InputWidget> {
               labelStyle: TextStyle(
                   fontSize: dimens.fontInputWidget,
                   color: widget.dark == false
-                      ? colors.accentColor
-                      : colors.primaryColor //cor da label
+                      ? AppColors.accentColor
+                      : AppColors.primaryColor //cor da label
                   ),
               border: UnderlineInputBorder(
                   borderSide: BorderSide(
-                color: colors.accentColor,
+                color: AppColors.accentColor,
                 //cor da label quando esta com focus
                 width: 0,
               )),
               focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
                       color: widget.dark == false
-                          ? colors.primaryColor
-                          : colors
-                              .accentColor, //cor da label quando esta com focus
+                          ? AppColors.primaryColor
+                          : AppColors.accentColor, //cor da label quando esta com focus
                       width: 1)))),
     );
   }

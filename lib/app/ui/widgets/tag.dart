@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
-import 'package:flutter_architecture/core/values/colors.dart' as colors;
+import 'package:flutter_architecture/core/values/colors.dart';
 
 class TagWidget extends StatefulWidget {
   final String label;
@@ -54,9 +54,9 @@ class _TagWidgetState extends State<TagWidget> {
         margin: const EdgeInsets.only(left: 12),
         decoration: BoxDecoration(
           color:
-              _isActive == true ? colors.accentColor : colors.backgroundColor,
+              _isActive == true ? AppColors.accentColor : AppColors.backgroundColor,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: colors.accentColor, width: 1),
+          border: Border.all(color: AppColors.accentColor, width: 1),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -65,11 +65,11 @@ class _TagWidgetState extends State<TagWidget> {
                 text: widget.label,
                 small: true,
                 color: _isActive == true
-                    ? colors.backgroundColor
-                    : colors.accentColor),
+                    ? AppColors.backgroundColor
+                    : AppColors.accentColor),
             if (widget.arrow == true) const SizedBox(width: 8),
             if (widget.arrow == true)
-              Icon(Icons.arrow_drop_down, color: colors.accentColor)
+              Icon(Icons.arrow_drop_down, color: AppColors.accentColor)
           ],
         ),
       ),

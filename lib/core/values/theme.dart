@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'colors.dart' as colors;
+import 'colors.dart';
+import 'font_family.dart';
 
-final ThemeData appTheme = ThemeData(
-    primaryColor: colors.primaryColor,
-    accentColor: colors.accentColor,
-    scaffoldBackgroundColor: colors.backgroundColor,
-
+final ThemeData themeData = ThemeData(
+    fontFamily: FontFamily.productSans,
+    brightness: Brightness.light,
+    // primarySwatch: MaterialColor(AppColors.orange[500]!.value, AppColors.orange),
+    primaryColor: AppColors.primaryColor,
+    primaryColorBrightness: Brightness.light,
+    scaffoldBackgroundColor: AppColors.backgroundColor,
+    colorScheme:
+        ColorScheme.fromSwatch().copyWith(secondary: AppColors.accentColor),
     appBarTheme: AppBarTheme(
-        color: colors.backgroundColor,
-        iconTheme: IconThemeData(color: colors.accentLightColor)
-    ),
-
+        color: AppColors.backgroundColor,
+        iconTheme: IconThemeData(color: AppColors.accentLightColor)),
     buttonTheme: ButtonThemeData(
-        buttonColor: colors.accentLightColor,
-        disabledColor: colors.primaryColorDark
-    )
-);
+        buttonColor: AppColors.accentLightColor,
+        disabledColor: AppColors.primaryColorDark));

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/core/values/colors.dart' as colors;
+import 'package:flutter_architecture/core/values/colors.dart';
 import 'package:flutter_architecture/core/values/dimens.dart' as dimens;
 
 import 'modal.dart';
@@ -66,7 +66,7 @@ class DropdownWidget extends StatelessWidget {
           },
           ////////////////////////////////////////////////////////////////////////////////////////////////////
           textCapitalization: TextCapitalization.none,
-          style: TextStyle(color: colors.primaryColorDark),
+          style: TextStyle(color: AppColors.primaryColorDark),
           //cor do texto ao digitar,
           decoration: InputDecoration(
               suffixIcon: Icon(Icons.arrow_drop_down),
@@ -75,7 +75,7 @@ class DropdownWidget extends StatelessWidget {
               labelText: label ?? "",
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-                    color: colors.primaryColorDark, //cor da borda
+                    color: AppColors.primaryColorDark, //cor da borda
                     width: 0.0),
               ),
               hintStyle: const TextStyle(
@@ -84,16 +84,16 @@ class DropdownWidget extends StatelessWidget {
               enabled: true,
               labelStyle: TextStyle(
                   fontSize: dimens.fontInputWidget,
-                  color: colors.primaryColorDark //cor da label
+                  color: AppColors.primaryColorDark //cor da label
                   ),
               border: UnderlineInputBorder(
                   borderSide: BorderSide(
-                      color: colors.primaryColorDark,
+                      color: AppColors.primaryColorDark,
                       //cor da label quando esta com focus
                       width: 0)),
               focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                      color: colors.primaryColorDark,
+                      color: AppColors.primaryColorDark,
                       //cor da label quando esta com focus
                       width: 1)))),
     );

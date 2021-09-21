@@ -14,7 +14,7 @@ class AuthRepository implements IAuthRepository {
     final hasConnection = await ConnectionHelper.hasConnection();
 
     if (hasConnection) {
-      response = await service.login(login, senha);
+      response = await service.loginTest(login, senha);
     } else {
       response.message = "Device offline";
     }

@@ -5,6 +5,7 @@ class StorageKeys {
   static const String cookie = "COOKIE";
   static const String login = "LOGIN";
   static const String senha = "SENHA";
+  static const String uid = "uid";
 }
 
 class StorageHelper {

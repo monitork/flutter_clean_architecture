@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/core/values/colors.dart' as colors;
+import 'package:flutter_architecture/core/values/colors.dart';
 import './text.dart';
 
 class SnackBarWidget {
@@ -17,7 +17,7 @@ class SnackBarWidget {
               textColor: Colors.white54,
             ),
       backgroundColor:
-          error == true ? Colors.redAccent : colors.snackbarBackgroundColor,
+          error == true ? Colors.redAccent : AppColors.snackBarBackgroundColor,
       content: TextWidget(
         white: true,
         bold: true,

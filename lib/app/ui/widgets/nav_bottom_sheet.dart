@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/core/values/colors.dart' as colors;
+import 'package:flutter_architecture/core/values/colors.dart';
 
 import 'card_view.dart';
 import 'text.dart';
@@ -42,7 +42,7 @@ class NavBottomSheetWidget extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => pageToCall));
                   },
                   child:
-                      TextWidget(color: colors.accentColor, text: buttonRight)),
+                      TextWidget(color: AppColors.accentColor, text: buttonRight)),
             ),
           )),
     );

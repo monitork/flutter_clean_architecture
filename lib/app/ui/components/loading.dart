@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
-import 'package:flutter_architecture/core/values/colors.dart' as colors;
+import 'package:flutter_architecture/core/values/colors.dart';
 
 class LoadingWidget extends StatefulWidget {
   final bool backgroundTransparent;
@@ -44,7 +44,7 @@ class _LoadingWidgetState extends State<LoadingWidget> {
                   CircularProgressIndicator(
                     backgroundColor: Colors.transparent,
                     valueColor:
-                        AlwaysStoppedAnimation<Color>(colors.accentColor),
+                        AlwaysStoppedAnimation<Color>(AppColors.accentColor),
                   )
                 ]),
           )
