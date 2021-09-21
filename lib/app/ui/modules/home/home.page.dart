@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/app/ui/modules/unauthenticated/login/login.page.dart';
+import 'package:flutter_architecture/app/ui/modules/auth/login/login.page.dart';
 import 'package:flutter_architecture/app/ui/widgets/button.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
 import 'package:flutter_architecture/core/di/injector_provider.dart';

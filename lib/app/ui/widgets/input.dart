@@ -49,10 +49,10 @@ class _InputWidgetState extends State<InputWidget> {
   Widget build(BuildContext context) {
     // _controller.text = widget.value ?? '';
     //fix the invertion of text editing
-    if (widget.value != null) {
-      _controller.selection =
-          TextSelection.collapsed(offset: widget.value!.length);
-    }
+    // if (widget.value != null) {
+    //   _controller.selection =
+    //       TextSelection.collapsed(offset: widget.value!.length);
+    // }
 
     return Padding(
       padding: const EdgeInsets.only(top: dimens.fieldSpace),

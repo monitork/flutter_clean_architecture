@@ -1,9 +1,11 @@
 import 'package:flutter_architecture/app/data/cache/storage.helper.dart';
-import 'package:flutter_architecture/app/data/mappers/user.mapper.dart';
+import 'package:flutter_architecture/app/data/mappers/user_mapper.dart';
 import 'package:flutter_architecture/app/domain/http_response.dart';
 import 'package:flutter_architecture/core/di/http_client.dart';
 import 'package:flutter_architecture/core/di/injector_provider.dart';
-import 'package:flutter_architecture/app/data/remote/configs/endpoints.dart' as endpoints;
+import 'package:flutter_architecture/app/data/remote/configs/endpoints.dart'
+    as endpoints;
+
 class AuthService {
   HttpClient client = inject<HttpClient>();
 
@@ -34,7 +36,6 @@ class AuthService {
       response.data = e;
       response.message = "User not found";
     });
-
     return response;
   }
 }

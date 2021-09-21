@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/app/ui/modules/authenticated/home/home.page.dart';
+import 'package:flutter_architecture/app/ui/modules/home/home.page.dart';
 import 'package:flutter_architecture/app/ui/widgets/button.dart';
 import 'package:flutter_architecture/app/ui/widgets/input.dart';
 import 'package:flutter_architecture/app/ui/widgets/logo.dart';
@@ -75,9 +75,10 @@ class LoginWidget {
                         }
 
                         await Future.delayed(const Duration(seconds: 1));
-
-                        Navigator.pushReplacement(
-                            context, NavSlideFromTop(page: const HomePage()));
+                        if (ret) {
+                          Navigator.pushReplacement(
+                              context, NavSlideFromTop(page: const HomePage()));
+                        }
                       });
                 }),
             const SizedBox(height: 12),

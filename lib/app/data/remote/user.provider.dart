@@ -1,4 +1,4 @@
-import 'package:flutter_architecture/app/data/mappers/user.mapper.dart';
+import 'package:flutter_architecture/app/data/mappers/user_mapper.dart';
 import 'package:flutter_architecture/app/domain/http_response.dart';
 import 'package:flutter_architecture/core/di/http_client.dart';
 import 'package:flutter_architecture/app/data/remote/configs/endpoints.dart'
