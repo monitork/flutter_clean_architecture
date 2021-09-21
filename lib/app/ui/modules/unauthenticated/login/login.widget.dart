@@ -29,8 +29,10 @@ class LoginWidget {
                 builder: (context, AsyncSnapshot<String> snapshot) {
                   return InputWidget(
                     placeholder: "LOGIN",
-                    value: snapshot.data??'',
+                    value: snapshot.data,
+                    errorMessage: snapshot.error?.toString(),
                     onChange: (value) => vm.setLogin(value),
+                    // onChange: (value) => vm.updateEmail(value),
                   );
                 }),
             const SizedBox(height: 10),
@@ -39,41 +41,44 @@ class LoginWidget {
                 builder: (context, snapshot) {
                   return InputWidget(
                     placeholder: "SENHA",
-                    value: snapshot.data??'',
+                    value: snapshot.data,
+                    errorMessage: snapshot.error?.toString(),
                     onChange: (value) => vm.setPassword(value),
+                    // onChange: (value) => vm.updatePassword(value),
                   );
                 }),
             const SizedBox(height: 20),
             Align(
                 alignment: Alignment.centerRight,
                 child: FlatButton(
-                  onPressed: () => print("forgot password click"),
-                  child: const TextWidget(
-                    text: "Esqueci a senha",
-                    small: true,
-                  ),
-                )),
+                    onPressed: () => print("forgot password click"),
+                    child: const TextWidget(
+                        text: "Esqueci a senha", small: true))),
             const SizedBox(height: 12),
-            ButtonWidget(
-                label: "login",
-                onPress: () async {
-                  final ret = await vm.signIn();
+            StreamBuilder<bool>(
+                stream: vm.submitValid,
+                builder: (context, snapshot) {
+                  return ButtonWidget(
+                      label: "login",
+                      disabled: snapshot.data == null || !snapshot.data!,
+                      onPress: () async {
+                        final ret = await vm.signIn();
+                        if (ret) {
+                          SnackBarWidget(key, message: "SUCCESS");
+                        } else {
+                          SnackBarWidget(key,
+                              error: true,
+                              message: "NOT FOUND",
+                              actionMessage: "OK", action: () {
+                            print("ACTION CLICKED");
+                          });
+                        }
 
-                  if (ret) {
-                    SnackBarWidget(key, message: "SUCCESS");
-                  } else {
-                    SnackBarWidget(key,
-                        error: true,
-                        message: "NOT FOUND",
-                        actionMessage: "OK", action: () {
-                      print("ACTION CLICKED");
-                    });
-                  }
+                        await Future.delayed(const Duration(seconds: 1));
 
-                  await Future.delayed(const Duration(seconds: 1));
-
-                  Navigator.pushReplacement(
-                      context, NavSlideFromTop(page: const HomePage()));
+                        Navigator.pushReplacement(
+                            context, NavSlideFromTop(page: const HomePage()));
+                      });
                 }),
             const SizedBox(height: 12),
             ButtonWidget(

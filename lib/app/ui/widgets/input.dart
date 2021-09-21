@@ -47,7 +47,7 @@ class _InputWidgetState extends State<InputWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _controller.text = widget.value!;
+    // _controller.text = widget.value ?? '';
     //fix the invertion of text editing
     if (widget.value != null) {
       _controller.selection =
@@ -77,6 +77,7 @@ class _InputWidgetState extends State<InputWidget> {
               hintText: widget.value ?? "Holder",
               labelText: widget.labelText ?? widget.placeholder,
               //errorText: widget.errorText,
+              errorText: widget.errorMessage,
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
                     color: widget.dark == false

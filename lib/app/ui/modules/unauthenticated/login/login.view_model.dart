@@ -14,9 +14,14 @@ class LoginViewModel extends BaseViewModel with Validators {
 
   Stream<String> get password => _password.stream.transform(validatePassword);
 
-  void setPassword(String value) => _password.add(value);
+  Stream<bool> get submitValid =>
+      Rx.combineLatest2(login, password, (email, password) {
+        return true;
+      });
 
-  void setLogin(String value) => _login.add(value);
+  Function(String) get setLogin => _login.sink.add;
+
+  Function(String) get setPassword => _password.sink.add;
 
   Future<bool> signIn() async {
     setLoading(true);
