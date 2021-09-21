@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/ui/components/loading.dart';
-import 'package:flutter_architecture/core/di/injector_provider.dart';
-
-import 'login.view_model.dart';
 import 'login.widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,8 +10,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> with LoginWidget {
-  @override
-  final vm = inject<LoginViewModel>();
+
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
