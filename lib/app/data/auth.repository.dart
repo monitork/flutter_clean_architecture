@@ -5,7 +5,7 @@ import 'package:flutter_architecture/core/di/injector_provider.dart';
 import 'package:flutter_architecture/device/connection/connection.helper.dart';
 
 class AuthRepository implements IAuthRepository {
-  AuthService service = inject<AuthService>();
+  AuthProvider service = inject<AuthProvider>();
 
   @override
   Future<HttpResponse> login(String login, String senha) async {
@@ -21,4 +21,19 @@ class AuthRepository implements IAuthRepository {
 
     return response;
   }
+
+  @override
+  Future<HttpResponse> tryLogin() async {
+    final hasConnection = await ConnectionHelper.hasConnection();
+    HttpResponse response = HttpResponse();
+    if (hasConnection) {
+      response = await service.tryLogin();
+    } else {
+      response.message = "Device offline";
+    }
+
+    return response;
+  }
+
+
 }

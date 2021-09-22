@@ -5,6 +5,7 @@ class AuthService {
   final _auth = BehaviorSubject<User?>.seeded(null);
 
   Stream<User?> get auth => _auth.stream;
+  User? get currentUser => _auth.stream.value;
 
-  Function(User) get setAuth => _auth.sink.add;
+  Function(User?) get setAuth => _auth.sink.add;
 }

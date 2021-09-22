@@ -5,7 +5,7 @@ import 'package:flutter_architecture/app/data/remote/configs/endpoints.dart'
     as endpoints;
 import 'package:flutter_architecture/core/di/injector_provider.dart';
 
-class UserService {
+class UserProvider {
   HttpClient client = inject<HttpClient>();
 
   Future<HttpResponse> list() async {

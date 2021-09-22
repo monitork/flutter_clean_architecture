@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'dart:math';
-
 import 'package:flutter_architecture/app/data/cache/storage.helper.dart';
 import 'package:flutter_architecture/app/data/mappers/user_mapper.dart';
 import 'package:flutter_architecture/app/domain/http_response.dart';
@@ -10,7 +7,7 @@ import 'package:flutter_architecture/app/data/remote/configs/endpoints.dart'
     as endpoints;
 import 'package:flutter_architecture/core/extensions/cap_extension.dart';
 
-class AuthService {
+class AuthProvider {
   HttpClient client = inject<HttpClient>();
 
   Future<HttpResponse> login(String login, String password) async {
@@ -53,7 +50,7 @@ class AuthService {
       var userData =
           data.firstWhere((element) => element["email"] == loginCaped);
       if (userData != null) {
-        StorageHelper.set(StorageKeys.token, "${userData["id"]}");
+        StorageHelper.set(StorageKeys.uid, "${userData["id"]}");
         response.statusCode = res.statusCode ?? 200;
         response.data = UserMapper.fromJson(userData);
         response.message = res.statusMessage ?? "";
@@ -72,20 +69,23 @@ class AuthService {
 
   Future<HttpResponse> tryLogin() async {
     final storageUid = await StorageHelper.get(StorageKeys.uid);
+    late HttpResponse response = HttpResponse();
     if (storageUid != null) {
       final String url = endpoints.login.allAuth;
-      final retAuth = client.get(url + storageUid);
+      final retAuth = client.get(url + '/' + storageUid);
       await retAuth.then((res) {
-        return HttpResponse(
+        response = HttpResponse(
             statusCode: res.statusCode ?? 200,
-            data: res.data,
+            data: UserMapper.fromJson(res.data),
             message: "Fetch User is success!");
       }).catchError((e) {
-        return HttpResponse(
+        response = HttpResponse(
             statusCode: 500, data: e, message: "Api get user err!");
       });
+    } else {
+      response = HttpResponse(
+          statusCode: 500, data: null, message: 'User is not logged in.');
     }
-    return HttpResponse(
-        statusCode: 500, data: null, message: 'User is not logged in.');
+    return response;
   }
 }
