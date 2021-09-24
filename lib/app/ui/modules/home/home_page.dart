@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/services/auth_service.dart';
+import 'package:flutter_architecture/app/services/navigation_service.dart';
 import 'package:flutter_architecture/app/ui/modules/auth/login/login_page.dart';
 import 'package:flutter_architecture/app/ui/widgets/button.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
@@ -35,12 +36,18 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: dimens.fieldSpace),
               ButtonWidget(
                 label: "Logout",
-                onPress: () => Navigator.pushReplacement(
-                    context, NavSlideFromLeft(page: const LoginPage())),
+                onPress: () {
+                  inject<NavigationService>().pushReplacementNamed('/login');
+                  // Navigator.pushReplacement(
+                  //     context, NavSlideFromLeft(page: const LoginPage()))
+                },
               ),
               ButtonWidget(
                   label: "Go to Profile",
-                  onPress: () => Navigator.of(context).pushNamed('/profile'))
+                  onPress: () {
+                    inject<NavigationService>().pushNamed('/profile');
+                    // Navigator.of(context).pushNamed('/profile')
+                  })
             ],
           ),
         ),

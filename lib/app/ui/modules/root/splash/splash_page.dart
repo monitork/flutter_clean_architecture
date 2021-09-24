@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/services/auth_service.dart';
+import 'package:flutter_architecture/app/services/navigation_service.dart';
 import 'package:flutter_architecture/app/ui/components/loading.dart';
 import 'package:flutter_architecture/app/ui/modules/auth/login/login_view_model.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
@@ -25,9 +26,11 @@ class _SplashPageState extends State<SplashPage> {
   Future<void> tryLogin(BuildContext context) async {
     await vm.tryLogin();
     if (authState.currentUser != null) {
-      Navigator.of(context).pushNamed('/home');
+      inject<NavigationService>().pushNamed('/home');
+      // Navigator.of(context).pushNamed('/home');
     } else {
-      Navigator.of(context).pushNamed('/login');
+      // Navigator.of(context).pushNamed('/login');
+      inject<NavigationService>().pushNamed('/login');
     }
   }
 
