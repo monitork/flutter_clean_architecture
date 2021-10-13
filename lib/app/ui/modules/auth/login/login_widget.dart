@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architecture/app/services/navigation_service.dart';
 import 'package:flutter_architecture/app/ui/modules/home/home_page.dart';
+import 'package:flutter_architecture/app/ui/routers.dart';
 import 'package:flutter_architecture/app/ui/widgets/button.dart';
 import 'package:flutter_architecture/app/ui/widgets/input.dart';
 import 'package:flutter_architecture/app/ui/widgets/logo.dart';
@@ -66,9 +68,9 @@ class LoginWidget {
                       onPress: () async {
                         final ret = await vm.signIn();
                         if (ret) {
-                          SnackBarWidget(key, message: "SUCCESS");
+                          SnackBarWidget(message: "SUCCESS");
                         } else {
-                          SnackBarWidget(key,
+                          SnackBarWidget(
                               error: true,
                               message: "NOT FOUND",
                               actionMessage: "OK", action: () {
@@ -91,18 +93,19 @@ class LoginWidget {
                   final ret = await vm.signIn();
 
                   if (ret) {
-                    SnackBarWidget(key, message: "SUCCESS");
+                    SnackBarWidget( message: "SUCCESS");
                   } else {
-                    SnackBarWidget(key,
+                    SnackBarWidget(
                         error: true,
                         message: "NOT FOUND",
                         actionMessage: "OK", action: () {
                       print("ACTION CLICKED");
                     });
                   }
-
-                  Navigator.pushReplacement(
-                      context, NavSlideFromTop(page: const HomePage()));
+                  inject<NavigationService>()
+                      .pushNamedAndRemoveUntil(Routes.home);
+                  // Navigator.pushReplacement(
+                  //     context, NavSlideFromTop(page: const HomePage()));
                 }),
             const SizedBox(height: 12),
             ButtonWidget(
@@ -112,18 +115,17 @@ class LoginWidget {
                   final ret = await vm.signIn();
 
                   if (ret) {
-                    SnackBarWidget(key, message: "SUCCESS");
+                    SnackBarWidget( message: "SUCCESS");
                   } else {
-                    SnackBarWidget(key,
+                    SnackBarWidget(
                         error: true,
                         message: "NOT FOUND",
                         actionMessage: "OK", action: () {
                       print("ACTION CLICKED");
                     });
                   }
-
-                  Navigator.pushReplacement(
-                      context, NavSlideFromTop(page: const HomePage()));
+                  inject<NavigationService>()
+                      .pushNamedAndRemoveUntil(Routes.home);
                 })
           ],
         ),

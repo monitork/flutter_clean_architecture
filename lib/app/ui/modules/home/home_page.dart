@@ -30,8 +30,16 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const TextWidget(text: "Home Page"),
-              TextWidget(
-                text: authState.currentUser!.name,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const TextWidget(
+                    text: "Name:",
+                  ),
+                  TextWidget(
+                    text: authState.currentUser?.name,
+                  ),
+                ],
               ),
               const SizedBox(height: dimens.fieldSpace),
               ButtonWidget(

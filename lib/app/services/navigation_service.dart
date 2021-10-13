@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 final NavigationService navService = NavigationService();
 
@@ -6,6 +6,8 @@ typedef _RoutePredicate = bool Function(Route<dynamic>);
 
 class NavigationService {
   final GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
+  final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
 
   Future<T?> pushNamed<T extends Object?>(
     String routeName, {

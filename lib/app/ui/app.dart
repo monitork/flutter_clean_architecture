@@ -14,5 +14,7 @@ class App extends StatelessWidget {
         routes: Routes.routes,
         initialRoute: '/',
         navigatorKey: inject<NavigationService>().navigationKey,
+        scaffoldMessengerKey:
+            inject<NavigationService>().rootScaffoldMessengerKey,
       );
 }

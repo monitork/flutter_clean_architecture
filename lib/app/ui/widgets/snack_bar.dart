@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architecture/app/services/navigation_service.dart';
+import 'package:flutter_architecture/core/di/injector_provider.dart';
 import 'package:flutter_architecture/core/values/colors.dart';
 import './text.dart';
 
 class SnackBarWidget {
-  SnackBarWidget(GlobalKey<ScaffoldState> scaffoldKey,
+  SnackBarWidget(
       {bool? error,
       required String message,
-      Function? action,
+      VoidCallback? action,
       String? actionMessage}) {
     final snackBar = SnackBar(
       action: action == null
           ? null
           : SnackBarAction(
               label: actionMessage ?? "OK",
-              onPressed: () => action == null ? () => null : action(),
+              onPressed: action,
               textColor: Colors.white54,
             ),
       backgroundColor:
@@ -26,6 +28,9 @@ class SnackBarWidget {
       ),
     );
 
-    scaffoldKey.currentState!.showSnackBar(snackBar);
+    inject<NavigationService>()
+        .rootScaffoldMessengerKey
+        .currentState!
+        .showSnackBar(snackBar);
   }
 }
