@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/services/auth_service.dart';
 import 'package:flutter_architecture/app/services/navigation_service.dart';
-import 'package:flutter_architecture/app/ui/modules/auth/login/login_page.dart';
 import 'package:flutter_architecture/app/ui/widgets/button.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
 import 'package:flutter_architecture/core/di/injector_app.dart';
 
 import 'package:flutter_architecture/core/values/dimens.dart' as dimens;
-import 'package:flutter_architecture/device/nav/nav_slide_from_left.dart';
 import 'home_bloc.dart';
 
 class HomePage extends StatefulWidget {

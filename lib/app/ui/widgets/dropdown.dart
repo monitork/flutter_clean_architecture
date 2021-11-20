@@ -47,22 +47,21 @@ class DropdownWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0),
       child: TextField(
           controller: _controller,
-          onChanged: (value) => null,
           enableInteractiveSelection: false,
           cursorColor: Colors.white,
           onTap: () {
-            ModalWidget.show(context,
+            ModalWidget.show(
                 body: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      TextWidget(
-                        text: label == null ? "" : label!.toUpperCase(),
-                        bold: true,
-                        accent: true,
-                      ),
-                      const SizedBox(height: 10),
-                      ...options
-                    ]));
+                  TextWidget(
+                    text: label == null ? "" : label!.toUpperCase(),
+                    bold: true,
+                    accent: true,
+                  ),
+                  const SizedBox(height: 10),
+                  ...options
+                ]));
           },
           ////////////////////////////////////////////////////////////////////////////////////////////////////
           textCapitalization: TextCapitalization.none,
