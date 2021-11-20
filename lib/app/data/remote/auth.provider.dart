@@ -23,7 +23,7 @@ class AuthProvider {
       String token = res.data["access_token"];
       StorageHelper.set(StorageKeys.token, token);
       StorageHelper.set(StorageKeys.login, login);
-      StorageHelper.set(StorageKeys.senha, password);
+      StorageHelper.set(StorageKeys.password, password);
 
       response.statusCode = res.statusCode ?? 200;
       response.data = UserMapper.fromJson(res.data);
@@ -31,7 +31,7 @@ class AuthProvider {
     }).catchError((e) {
       StorageHelper.set(StorageKeys.token, "");
       StorageHelper.set(StorageKeys.login, "");
-      StorageHelper.set(StorageKeys.senha, "");
+      StorageHelper.set(StorageKeys.password, "");
 
       response.statusCode = 500;
       response.data = e;

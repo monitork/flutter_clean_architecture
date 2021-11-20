@@ -44,7 +44,7 @@ class LoginWidget {
                 stream: bloc.password,
                 builder: (context, snapshot) {
                   return InputWidget(
-                    placeholder: "SENHA",
+                    placeholder: "PASSWORD",
                     value: snapshot.data,
                     errorMessage: snapshot.error?.toString(),
                     onChange: (value) => bloc.setPassword(value),
@@ -57,7 +57,7 @@ class LoginWidget {
                 child: FlatButton(
                     onPressed: () => print("forgot password click"),
                     child: const TextWidget(
-                        text: "Esqueci a senha", small: true))),
+                        text: "Forgot a password", small: true))),
             const SizedBox(height: 12),
             StreamBuilder<bool>(
                 stream: bloc.submitValid,
@@ -87,7 +87,7 @@ class LoginWidget {
                 }),
             const SizedBox(height: 12),
             ButtonWidget(
-                label: "cadastrar",
+                label: "register",
                 transparent: true,
                 onPress: () async {
                   final ret = await bloc.signIn();
@@ -110,7 +110,7 @@ class LoginWidget {
             const SizedBox(height: 12),
             ButtonWidget(
                 facebook: true,
-                label: "entrar com facebook",
+                label: "Login facebook",
                 onPress: () async {
                   final ret = await bloc.signIn();
 

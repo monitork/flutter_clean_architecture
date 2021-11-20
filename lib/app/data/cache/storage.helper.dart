@@ -4,7 +4,7 @@ class StorageKeys {
   static const String token = "TOKEN";
   static const String cookie = "COOKIE";
   static const String login = "LOGIN";
-  static const String senha = "SENHA";
+  static const String password = "PASSWORD";
   static const String uid = "uid";
 }
 

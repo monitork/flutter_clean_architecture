@@ -8,13 +8,13 @@ class AuthRepository implements IAuthRepository {
   AuthProvider service = inject<AuthProvider>();
 
   @override
-  Future<HttpResponse> login(String login, String senha) async {
+  Future<HttpResponse> login(String login, String password) async {
     HttpResponse response = HttpResponse();
 
     final hasConnection = await ConnectionHelper.hasConnection();
 
     if (hasConnection) {
-      response = await service.loginTest(login, senha);
+      response = await service.loginTest(login, password);
     } else {
       response.message = "Device offline";
     }
