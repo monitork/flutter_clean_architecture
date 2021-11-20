@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/app/ui/components/loading.dart';
+import 'package:flutter_architecture/app/ui/widgets/loading.dart';
 import 'package:flutter_architecture/core/base/bloc_provider.dart';
 import 'login_bloc.dart';
 import 'login_widget.dart';

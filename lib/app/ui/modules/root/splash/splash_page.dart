@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/services/auth_service.dart';
 import 'package:flutter_architecture/app/services/navigation_service.dart';
-import 'package:flutter_architecture/app/ui/components/loading.dart';
+import 'package:flutter_architecture/app/ui/widgets/loading.dart';
 import 'package:flutter_architecture/app/ui/modules/auth/login/login_bloc.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
 import 'package:flutter_architecture/core/di/injector_app.dart';
