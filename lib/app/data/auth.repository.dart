@@ -1,7 +1,7 @@
 import 'package:flutter_architecture/app/data/remote/auth.provider.dart';
 import 'package:flutter_architecture/app/domain/http_response.dart';
 import 'package:flutter_architecture/app/domain/repositories/auth.repository.dart';
-import 'package:flutter_architecture/core/di/injector_provider.dart';
+import 'package:flutter_architecture/core/di/injector_app.dart';
 import 'package:flutter_architecture/device/connection/connection.helper.dart';
 
 class AuthRepository implements IAuthRepository {

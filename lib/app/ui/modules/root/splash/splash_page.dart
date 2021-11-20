@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/services/auth_service.dart';
 import 'package:flutter_architecture/app/services/navigation_service.dart';
 import 'package:flutter_architecture/app/ui/components/loading.dart';
-import 'package:flutter_architecture/app/ui/modules/auth/login/login_view_model.dart';
+import 'package:flutter_architecture/app/ui/modules/auth/login/login_bloc.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
-import 'package:flutter_architecture/core/di/injector_provider.dart';
+import 'package:flutter_architecture/core/di/injector_app.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   final authState = inject<AuthService>();
-  final vm = inject<LoginViewModel>();
+  final vm = inject<LoginBloc>();
 
   @override
   void initState() {

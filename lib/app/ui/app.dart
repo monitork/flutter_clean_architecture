@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/services/navigation_service.dart';
-import 'package:flutter_architecture/core/di/injector_provider.dart';
+import 'package:flutter_architecture/core/di/injector_app.dart';
 import 'routers.dart';
 import 'package:flutter_architecture/core/values/theme.dart';
 
@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: themeData,
-        routes: Routes.routes,
+        onGenerateRoute: Routes.generateRoute,
         initialRoute: '/',
         navigatorKey: inject<NavigationService>().navigationKey,
         scaffoldMessengerKey:

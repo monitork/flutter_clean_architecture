@@ -4,11 +4,11 @@ import 'package:flutter_architecture/app/services/navigation_service.dart';
 import 'package:flutter_architecture/app/ui/modules/auth/login/login_page.dart';
 import 'package:flutter_architecture/app/ui/widgets/button.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
-import 'package:flutter_architecture/core/di/injector_provider.dart';
+import 'package:flutter_architecture/core/di/injector_app.dart';
 
 import 'package:flutter_architecture/core/values/dimens.dart' as dimens;
 import 'package:flutter_architecture/device/nav/nav_slide_from_left.dart';
-import 'home_view_model.dart';
+import 'home_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final vm = inject<HomeViewModel>();
+  final vm = inject<HomeBloc>();
   final authState = inject<AuthService>();
 
   @override

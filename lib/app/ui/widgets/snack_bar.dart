@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/services/navigation_service.dart';
-import 'package:flutter_architecture/core/di/injector_provider.dart';
+import 'package:flutter_architecture/core/di/injector_app.dart';
 import 'package:flutter_architecture/core/values/colors.dart';
 import './text.dart';
 

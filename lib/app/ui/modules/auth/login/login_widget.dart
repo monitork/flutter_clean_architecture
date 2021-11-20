@@ -7,15 +7,15 @@ import 'package:flutter_architecture/app/ui/widgets/input.dart';
 import 'package:flutter_architecture/app/ui/widgets/logo.dart';
 import 'package:flutter_architecture/app/ui/widgets/snack_bar.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
-import 'package:flutter_architecture/core/di/injector_provider.dart';
+import 'package:flutter_architecture/core/di/injector_app.dart';
 import 'package:flutter_architecture/device/nav/nav_slide_from_top.dart';
 import 'package:flutter_architecture/core/values/dimens.dart' as dimens;
-import 'login_view_model.dart';
+import 'login_bloc.dart';
 
 class LoginWidget {
-  final vm = inject<LoginViewModel>();
+  final vm = inject<LoginBloc>();
 
-  Widget form(BuildContext context, GlobalKey<ScaffoldState> key) {
+  Widget form(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(dimens.margin),
       child: Padding(

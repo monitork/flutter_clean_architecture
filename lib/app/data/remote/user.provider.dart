@@ -3,7 +3,7 @@ import 'package:flutter_architecture/app/domain/http_response.dart';
 import 'package:flutter_architecture/core/di/http_client.dart';
 import 'package:flutter_architecture/app/data/remote/configs/endpoints.dart'
     as endpoints;
-import 'package:flutter_architecture/core/di/injector_provider.dart';
+import 'package:flutter_architecture/core/di/injector_app.dart';
 
 class UserProvider {
   HttpClient client = inject<HttpClient>();

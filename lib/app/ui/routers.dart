@@ -1,8 +1,8 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/app/ui/modules/auth/profile/profile_page.dart';
-import 'modules/home/home_page.dart';
-import 'modules/root/splash/splash_page.dart';
-import 'modules/auth/login/login_page.dart';
+import 'package:get_it/get_it.dart';
 
 class Routes {
   Routes._();
@@ -13,10 +13,17 @@ class Routes {
   static const String home = '/home';
   static const String profile = '/profile';
 
-  static final routes = <String, WidgetBuilder>{
-    splash: (BuildContext context) => const SplashPage(),
-    login: (BuildContext context) => const LoginPage(),
-    home: (BuildContext context) => const HomePage(),
-    profile: (BuildContext context) => const ProfilePage(),
-  };
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    Widget widget;
+    try {
+      widget = GetIt.I.get<Widget>(instanceName: settings.name);
+    } catch (e) {
+      widget = Scaffold(
+        body: Center(child: Text('No route defined for ${settings.name}')),
+      );
+    }
+    return Platform.isIOS
+        ? CupertinoPageRoute(builder: (_) => widget, settings: settings)
+        : MaterialPageRoute(builder: (_) => widget, settings: settings);
+  }
 }

@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/app/ui/components/loading.dart';
+import 'package:flutter_architecture/core/base/bloc_provider.dart';
+import 'login_bloc.dart';
 import 'login_widget.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
-
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> with LoginWidget {
-
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
+class LoginPage extends StatelessWidget with LoginWidget {
+  final LoginBloc bloc;
+  LoginPage({Key? key,required this.bloc}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider<LoginBloc>(child: _buildBody(), bloc: bloc);
+  }
+
+  _buildBody(){
     return StreamBuilder<bool>(
-        stream: vm.loading,
+        stream: bloc.loading,
         builder: (context, snapshot) {
           return LoadingWidget(
               message: "Loading message",
               status: snapshot.data ?? false,
               child: SafeArea(
                 child: Scaffold(
-                    key: _scaffoldKey,
                     body: SingleChildScrollView(
-                      child: Container(child: form(context, _scaffoldKey)),
+                      child: Container(child: form(context)),
                     )),
               ));
         });
