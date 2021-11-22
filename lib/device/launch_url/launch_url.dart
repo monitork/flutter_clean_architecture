@@ -12,7 +12,7 @@ void launchURL(BuildContext context, String url) async {
             const Padding(
                 padding: EdgeInsets.all(10),
                 child: Text(
-                  "Fehler beim Öffnen der Website:",
+                  "Failed to open the website:",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 )),
             Padding(padding: const EdgeInsets.all(10), child: Text(url))
@@ -35,7 +35,7 @@ void launchMail(BuildContext context, String mailAdress) async {
             const Padding(
                 padding: EdgeInsets.all(10),
                 child: Text(
-                  "E-Mail konnte nicht geöffnet werden:",
+                  "Email could not be opened:",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 )),
             Padding(padding: const EdgeInsets.all(10), child: Text(mailAdress))
@@ -61,7 +61,7 @@ void launchPhone(BuildContext context, String phoneNumber) async {
             const Padding(
                 padding: EdgeInsets.all(10),
                 child: Text(
-                  "Telefonnummer konnte nicht geöffnet werden:",
+                  "Phone number could not be opened:",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 )),
             Padding(padding: const EdgeInsets.all(10), child: Text(phoneNumber))
@@ -86,7 +86,7 @@ void launchMap(BuildContext context, double lat, double lon) async {
               const Padding(
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    "Fehler beim Öffnen der Karte:",
+                    "Error opening card:",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )),
               Padding(

@@ -4,14 +4,14 @@ class JwtUtil {
   static Map<String, dynamic> decode(String token) {
     final parts = token.split('.');
     if (parts.length != 3) {
-      throw Exception('token inválido');
+      throw Exception('token invalid');
     }
 
     final payload = _decodeBase64(parts[1]);
     final payloadMap = json.decode(payload);
 
     if (payloadMap is! Map<String, dynamic>) {
-      throw Exception('payload inválido');
+      throw Exception('payload invalid');
     }
 
     return payloadMap;
@@ -30,7 +30,7 @@ class JwtUtil {
         output += '=';
         break;
       default:
-        throw Exception('base64 incorreto');
+        throw Exception('base64 incorrect');
     }
 
     return utf8.decode(base64Url.decode(output));
