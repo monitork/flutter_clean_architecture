@@ -1,5 +1,5 @@
-import 'package:flutter_architecture/app/domain/address.dart';
-import 'package:flutter_architecture/app/domain/repositories/company.dart';
+import 'package:flutter_architecture/app/domain/entities/address.dart';
+import 'package:flutter_architecture/app/domain/entities/company.dart';
 
 class User {
   final int id;

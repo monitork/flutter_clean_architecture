@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:rxdart/subjects.dart';
 
 abstract class BaseBloc {
@@ -7,5 +8,10 @@ abstract class BaseBloc {
 
   void setLoading(bool value) => _loading.add(value);
 
-  void dispose();
+  @mustCallSuper
+  void onDispose() {
+    _loading.close();
+  }
+
+  void onInit() {}
 }

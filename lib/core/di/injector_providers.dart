@@ -6,7 +6,7 @@ class InjectorProviders {
   static Future setup(GetIt inject) async {
 
   //Remote Services
-    inject.registerFactory(() => AuthProvider());
-    inject.registerFactory(() => UserProvider());
+    inject.registerFactory(() => AuthProvider(inject(),inject()));
+    inject.registerFactory(() => UserProvider(inject()));
   }
 }

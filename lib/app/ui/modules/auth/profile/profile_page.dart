@@ -17,16 +17,16 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _oneRow("Username:", authState.currentUser!.name),
-            _oneRow("Email:", authState.currentUser!.email),
-            _oneRow("Phone:", authState.currentUser!.phone),
+            _oneRow("Username:", authState.currentUser?.name),
+            _oneRow("Email:", authState.currentUser?.email),
+            _oneRow("Phone:", authState.currentUser?.phone),
           ],
         ),
       ),
     );
   }
 
-  Widget _oneRow(String label, String text) {
+  Widget _oneRow(String label, String? text) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -34,7 +34,7 @@ class ProfilePage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: TextWidget(text: label),
         ),
-        TextWidget(text: text),
+        TextWidget(text: text??''),
       ],
     );
   }

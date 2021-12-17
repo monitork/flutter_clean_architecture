@@ -3,6 +3,7 @@ import 'package:flutter_architecture/app/services/auth_service.dart';
 import 'package:flutter_architecture/app/services/navigation_service.dart';
 import 'package:flutter_architecture/app/ui/widgets/button.dart';
 import 'package:flutter_architecture/app/ui/widgets/text.dart';
+import 'package:flutter_architecture/core/base/base_state.dart';
 import 'package:flutter_architecture/core/di/injector_app.dart';
 
 import 'package:flutter_architecture/core/values/dimens.dart' as dimens;
@@ -15,10 +16,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final vm = inject<HomeBloc>();
-  final authState = inject<AuthService>();
-
+class _HomePageState extends BaseState<HomePage, HomeBloc> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                     text: "Name:",
                   ),
                   TextWidget(
-                    text: authState.currentUser?.name,
+                    text: bloc.currentUser?.name,
                   ),
                 ],
               ),

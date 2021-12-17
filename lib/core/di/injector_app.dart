@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_architecture/app/data/cache/storage.helper.dart';
 import 'package:flutter_architecture/core/di/injector_services.dart';
 import 'package:get_it/get_it.dart';
 
@@ -10,13 +12,15 @@ import 'injector_repositories.dart';
 final GetIt inject = GetIt.I;
 
 Future<void> setupInjection() async {
-//Components
-  inject.registerSingleton(HttpClient());
-//Remote Services
+  //Components
+  inject.registerSingleton(StorageHelper());
+  inject.registerSingleton(Dio());
+  inject.registerSingleton(HttpClient(inject(), inject()));
+  //Remote Services
   await InjectorProviders.setup(inject);
-//Repositories
+  //Repositories
   await InjectorRepositories.setup(inject);
-// Services
+  // Services
   await InjectorServices.setup(inject);
   //Bloc
   await InjectorBlocs.setup(inject);

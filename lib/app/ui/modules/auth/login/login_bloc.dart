@@ -1,19 +1,18 @@
 import 'package:flutter_architecture/app/data/auth.repository.dart';
-import 'package:flutter_architecture/app/domain/http_response.dart';
-import 'package:flutter_architecture/app/domain/user.dart';
+import 'package:flutter_architecture/app/domain/entities/http_response.dart';
+import 'package:flutter_architecture/app/domain/entities/user.dart';
 import 'package:flutter_architecture/app/services/auth_service.dart';
 import 'package:flutter_architecture/core/base/base_bloc.dart';
-import 'package:flutter_architecture/core/di/injector_app.dart';
 import 'package:flutter_architecture/core/utils/validator.util.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LoginBloc extends BaseBloc with Validators {
-  final AuthRepository repository;
-  final authState = inject<AuthService>();
+  final AuthRepository _repository;
+  final AuthService _authState;
   final _login = BehaviorSubject<String>.seeded("");
   final _password = BehaviorSubject<String>.seeded("");
 
-  LoginBloc(this.repository);
+  LoginBloc(this._repository, this._authState);
 
   Stream<String> get login => _login.stream.transform(validateEmail);
 
@@ -31,7 +30,7 @@ class LoginBloc extends BaseBloc with Validators {
   Future<bool> signIn() async {
     setLoading(true);
     await Future.delayed(const Duration(seconds: 1));
-    HttpResponse ret = await repository.login(_login.value, _password.value);
+    HttpResponse ret = await _repository.login(_login.value, _password.value);
     setLoading(false);
     if (ret.statusCode == 200) {
       return true;
@@ -41,16 +40,14 @@ class LoginBloc extends BaseBloc with Validators {
 
   Future tryLogin() async {
     setLoading(true);
-    HttpResponse ret = await repository.tryLogin();
+    HttpResponse ret = await _repository.tryLogin();
 
     setLoading(false);
-    print(ret.statusCode);
     if (ret.statusCode == 200) {
-      print("After Login ${ret.data}");
-      authState.setAuth(ret.data as User);
+      _authState.setAuth(ret.data as User);
       return true;
     }
-    authState.setAuth(null);
+    _authState.setAuth(null);
     return false;
   }
 

@@ -2,16 +2,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter_architecture/app/data/cache/storage.helper.dart';
 
 class HttpClient {
-  late Dio _client;
+  final Dio _client;
+  final StorageHelper _refs;
 
-  HttpClient() {
-    _client = Dio();
+  HttpClient(this._client, this._refs) {
     _client.interceptors.add(_interceptor());
   }
 
   Interceptor _interceptor() {
     return InterceptorsWrapper(onRequest: (options, handler) async {
-      final storageToken = await StorageHelper.get(StorageKeys.token);
+      final storageToken = await _refs.get(StorageKeys.token);
       if (storageToken != null) {
         options.headers.addAll({
           "Authorization": 'Bearer $storageToken',

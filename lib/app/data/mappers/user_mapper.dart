@@ -1,6 +1,6 @@
 import 'package:flutter_architecture/app/data/mappers/address_mapper.dart';
 import 'package:flutter_architecture/app/data/mappers/company_mapper.dart';
-import 'package:flutter_architecture/app/domain/user.dart';
+import 'package:flutter_architecture/app/domain/entities/user.dart';
 
 class UserMapper {
   static List<User> fromJsonList(List<dynamic> json) =>

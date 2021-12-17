@@ -6,14 +6,15 @@ import 'login_widget.dart';
 
 class LoginPage extends StatelessWidget with LoginWidget {
   final LoginBloc bloc;
-  LoginPage({Key? key,required this.bloc}) : super(key: key);
+
+  LoginPage({Key? key, required this.bloc}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginBloc>(child: _buildBody(), bloc: bloc);
   }
 
-  _buildBody(){
+  _buildBody() {
     return StreamBuilder<bool>(
         stream: bloc.loading,
         builder: (context, snapshot) {
@@ -23,8 +24,8 @@ class LoginPage extends StatelessWidget with LoginWidget {
               child: SafeArea(
                 child: Scaffold(
                     body: SingleChildScrollView(
-                      child: Container(child: form(context)),
-                    )),
+                  child: Container(child: form(context, bloc)),
+                )),
               ));
         });
   }

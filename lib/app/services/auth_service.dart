@@ -1,4 +1,4 @@
-import 'package:flutter_architecture/app/domain/user.dart';
+import 'package:flutter_architecture/app/domain/entities/user.dart';
 import 'package:rxdart/rxdart.dart';
 
 class AuthService {

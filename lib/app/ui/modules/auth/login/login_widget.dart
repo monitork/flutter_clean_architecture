@@ -13,9 +13,7 @@ import 'package:flutter_architecture/core/values/dimens.dart' as dimens;
 import 'login_bloc.dart';
 
 class LoginWidget {
-  final bloc = inject<LoginBloc>();
-
-  Widget form(BuildContext context) {
+  Widget form(BuildContext context, LoginBloc _bloc) {
     return Padding(
       padding: const EdgeInsets.all(dimens.margin),
       child: Padding(
@@ -27,7 +25,7 @@ class LoginWidget {
             const LogoWidget(),
             const SizedBox(height: 20),
             StreamBuilder<String>(
-                stream: bloc.login,
+                stream: _bloc.login,
                 builder: (context, AsyncSnapshot<String> snapshot) {
                   return InputWidget(
                     placeholder: "LOGIN",
@@ -35,19 +33,19 @@ class LoginWidget {
                     // Ký tự đầu tiên sẽ viết hoa
                     value: snapshot.data,
                     errorMessage: snapshot.error?.toString(),
-                    onChange: (value) => bloc.setLogin(value),
+                    onChange: (value) => _bloc.setLogin(value),
                     // onChange: (value) => vm.updateEmail(value),
                   );
                 }),
             const SizedBox(height: 10),
             StreamBuilder<String>(
-                stream: bloc.password,
+                stream: _bloc.password,
                 builder: (context, snapshot) {
                   return InputWidget(
                     placeholder: "PASSWORD",
                     value: snapshot.data,
                     errorMessage: snapshot.error?.toString(),
-                    onChange: (value) => bloc.setPassword(value),
+                    onChange: (value) => _bloc.setPassword(value),
                     // onChange: (value) => vm.updatePassword(value),
                   );
                 }),
@@ -60,13 +58,13 @@ class LoginWidget {
                         text: "Forgot a password", small: true))),
             const SizedBox(height: 12),
             StreamBuilder<bool>(
-                stream: bloc.submitValid,
+                stream: _bloc.submitValid,
                 builder: (context, snapshot) {
                   return ButtonWidget(
                       label: "login",
                       disabled: snapshot.data == null || !snapshot.data!,
                       onPress: () async {
-                        final ret = await bloc.signIn();
+                        final ret = await _bloc.signIn();
                         if (ret) {
                           SnackBarWidget(message: "SUCCESS");
                         } else {
@@ -90,7 +88,7 @@ class LoginWidget {
                 label: "register",
                 transparent: true,
                 onPress: () async {
-                  final ret = await bloc.signIn();
+                  final ret = await _bloc.signIn();
 
                   if (ret) {
                     SnackBarWidget( message: "SUCCESS");
@@ -112,7 +110,7 @@ class LoginWidget {
                 facebook: true,
                 label: "Login facebook",
                 onPress: () async {
-                  final ret = await bloc.signIn();
+                  final ret = await _bloc.signIn();
 
                   if (ret) {
                     SnackBarWidget( message: "SUCCESS");

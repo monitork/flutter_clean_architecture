@@ -14,17 +14,17 @@ class StorageHelper {
   static Future<dynamic> _getInstance() async =>
       _prefs = await SharedPreferences.getInstance();
 
-  static Future<String?> get(String key) async {
+   Future<String?> get(String key) async {
     await _getInstance();
     return _prefs != null ? _prefs!.getString(key) : null;
   }
 
-  static void set(String key, dynamic value) async {
+   void set(String key, dynamic value) async {
     await _getInstance();
     if (_prefs != null) _prefs!.setString(key, value);
   }
 
-  static void remove(String key) async {
+   void remove(String key) async {
     await _getInstance();
     if (_prefs != null) _prefs!.remove(key);
   }

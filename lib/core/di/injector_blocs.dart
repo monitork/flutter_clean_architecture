@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 
 class InjectorBlocs {
   static Future setup(GetIt inject) async {
-    inject.registerLazySingleton(() => LoginBloc(inject()));
-    inject.registerLazySingleton(() => HomeBloc());
+    inject.registerLazySingleton(() => LoginBloc(inject(), inject()));
+    inject.registerLazySingleton(() => HomeBloc(inject()));
   }
 }

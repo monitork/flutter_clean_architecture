@@ -1,4 +1,4 @@
-import 'package:flutter_architecture/app/domain/address.dart';
+import 'package:flutter_architecture/app/domain/entities/address.dart';
 
 class AddressMapper {
   static Address fromJson(Map<String, dynamic> json) {

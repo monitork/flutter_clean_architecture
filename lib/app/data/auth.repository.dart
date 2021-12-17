@@ -1,11 +1,13 @@
 import 'package:flutter_architecture/app/data/remote/auth.provider.dart';
-import 'package:flutter_architecture/app/domain/http_response.dart';
-import 'package:flutter_architecture/app/domain/repositories/auth.repository.dart';
+import 'package:flutter_architecture/app/domain/entities/http_response.dart';
+import 'package:flutter_architecture/app/domain/repositories/auth_repository.dart';
 import 'package:flutter_architecture/core/di/injector_app.dart';
 import 'package:flutter_architecture/device/connection/connection.helper.dart';
 
 class AuthRepository implements IAuthRepository {
-  AuthProvider service = inject<AuthProvider>();
+  final AuthProvider _service;
+
+  AuthRepository(this._service);
 
   @override
   Future<HttpResponse> login(String login, String password) async {
@@ -14,7 +16,7 @@ class AuthRepository implements IAuthRepository {
     final hasConnection = await ConnectionHelper.hasConnection();
 
     if (hasConnection) {
-      response = await service.loginTest(login, password);
+      response = await _service.loginTest(login, password);
     } else {
       response.message = "Device offline";
     }
@@ -27,7 +29,7 @@ class AuthRepository implements IAuthRepository {
     final hasConnection = await ConnectionHelper.hasConnection();
     HttpResponse response = HttpResponse();
     if (hasConnection) {
-      response = await service.tryLogin();
+      response = await _service.tryLogin();
     } else {
       response.message = "Device offline";
     }

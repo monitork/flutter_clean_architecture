@@ -1,7 +1,7 @@
 import 'base_url.dart' as base_url;
 
 class _Login {
-  final allAuth = base_url.auth + "/users";
+  final allAuth = base_url.auth + "/users/1";
   final auth = base_url.auth;
 }
 

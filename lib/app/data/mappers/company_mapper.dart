@@ -1,4 +1,4 @@
-import 'package:flutter_architecture/app/domain/repositories/company.dart';
+import 'package:flutter_architecture/app/domain/entities/company.dart';
 
 class CompanyMapper {
   static List<Company> fromJsonList(List<dynamic> json) =>
